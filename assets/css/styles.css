@@ -1,41 +1,46 @@
 /* ==========================================================================
-   ConsultAnythingTech Design System & Motion Tokens
+   CATech Design System & Motion Tokens
    Adheres to transitions.dev motion guidelines & WCAG accessibility standards
    ========================================================================== */
 
 :root {
+  /* Brand Colors */
+  --color-brand:        #14b8a6; /* teal-500  */
+  --color-brand-dark:   #0d9488; /* teal-600  */
+  --color-accent:       #f59e0b; /* amber-500 */
+  --color-bg:           #09090b; /* zinc-950  */
+  --color-surface:      #18181b; /* zinc-900  */
+  --color-border:       #27272a; /* zinc-800  */
+
   /* Motion Tokens (transitions.dev) */
   --duration-instant: 50ms;
-  --duration-fast: 150ms;
-  --duration-normal: 250ms;
-  --duration-slow: 400ms;
-  --duration-slower: 600ms;
+  --duration-fast:    150ms;
+  --duration-normal:  250ms;
+  --duration-slow:    400ms;
+  --duration-slower:  600ms;
 
-  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
-  --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
-  --ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+  --ease-standard:    cubic-bezier(0.2, 0, 0, 1);
+  --ease-decelerate:  cubic-bezier(0, 0, 0.2, 1);
+  --ease-accelerate:  cubic-bezier(0.4, 0, 1, 1);
 
   --distance-sm: 4px;
   --distance-md: 8px;
   --distance-lg: 16px;
 
-  /* Header height variable for scroll offset */
   --header-height: 4.5rem;
 }
 
 /* Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  *, *::before, *::after {
+    animation-duration:       0.01ms !important;
+    animation-iteration-count: 1     !important;
+    transition-duration:      0.01ms !important;
+    scroll-behavior:          auto   !important;
   }
 }
 
-/* Base Layout & Typography Defaults */
+/* Base Layout */
 html {
   scroll-padding-top: var(--header-height);
   color-scheme: dark;
@@ -43,108 +48,108 @@ html {
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background-color: #030712; /* Tailwind slate-950 */
-  color: #f8fafc; /* Tailwind slate-50 */
+  background-color: var(--color-bg);
+  color: #f4f4f5; /* zinc-100 */
   min-height: 100vh;
   overflow-x: hidden;
 }
 
 /* Glassmorphism Header */
 .glass-header {
-  background: rgba(3, 7, 18, 0.8);
+  background: rgba(9, 9, 11, 0.8);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   transition: background-color var(--duration-normal) var(--ease-standard),
-              border-color var(--duration-normal) var(--ease-standard);
+              border-color      var(--duration-normal) var(--ease-standard);
 }
 
 .glass-header.scrolled {
-  background: rgba(3, 7, 18, 0.95);
-  border-bottom-color: rgba(99, 102, 241, 0.2);
+  background: rgba(9, 9, 11, 0.96);
+  border-bottom-color: rgba(20, 184, 166, 0.2);
 }
 
-/* Radial Ambient Glow Accents */
+/* Ambient Glow Accents */
 .ambient-glow {
   position: absolute;
   border-radius: 9999px;
   filter: blur(80px);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.4;
+  opacity: 0.35;
 }
 
-.ambient-glow-indigo {
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, transparent 70%);
+.ambient-glow-teal {
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.4) 0%, transparent 70%);
 }
 
-.ambient-glow-cyan {
-  background: radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, transparent 70%);
+.ambient-glow-amber {
+  background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, transparent 70%);
 }
 
-/* Interactive Card Transitions */
+/* Interactive Cards */
 .interactive-card {
-  transition: transform var(--duration-normal) var(--ease-standard),
-              border-color var(--duration-normal) var(--ease-standard),
-              box-shadow var(--duration-normal) var(--ease-standard);
+  transition: transform      var(--duration-normal) var(--ease-standard),
+              border-color   var(--duration-normal) var(--ease-standard),
+              box-shadow     var(--duration-normal) var(--ease-standard);
 }
 
 .interactive-card:hover {
-  transform: translateY(-2px);
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.15);
+  transform:    translateY(-2px);
+  border-color: rgba(20, 184, 166, 0.35);
+  box-shadow:   0 12px 30px -10px rgba(20, 184, 166, 0.12);
 }
 
 .service-card {
-  transition: transform var(--duration-normal) var(--ease-standard),
-              border-color var(--duration-normal) var(--ease-standard),
-              box-shadow var(--duration-normal) var(--ease-standard);
+  transition: transform      var(--duration-normal) var(--ease-standard),
+              border-color   var(--duration-normal) var(--ease-standard),
+              box-shadow     var(--duration-normal) var(--ease-standard);
 }
 
 .service-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(99, 102, 241, 0.45);
-  box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
+  transform:    translateY(-4px);
+  border-color: rgba(20, 184, 166, 0.4);
+  box-shadow:   0 20px 40px -15px rgba(20, 184, 166, 0.15);
 }
 
-/* Product Showcase Cards */
+/* Product Cards */
 .product-card {
-  transition: transform var(--duration-normal) var(--ease-standard),
+  transition: transform    var(--duration-normal) var(--ease-standard),
               border-color var(--duration-normal) var(--ease-standard),
-              box-shadow var(--duration-normal) var(--ease-standard),
-              opacity var(--duration-normal) var(--ease-standard);
-  opacity: 1;
+              box-shadow   var(--duration-normal) var(--ease-standard),
+              opacity      var(--duration-normal) var(--ease-standard);
+  opacity:   1;
   transform: translateY(0) scale(1);
 }
 
 .product-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(99, 102, 241, 0.45);
-  box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
+  transform:    translateY(-4px);
+  border-color: rgba(20, 184, 166, 0.4);
+  box-shadow:   0 20px 40px -15px rgba(20, 184, 166, 0.15);
 }
 
 .product-card-hidden {
-  opacity: 0;
-  transform: scale(0.96);
+  opacity:        0;
+  transform:      scale(0.96);
   pointer-events: none;
 }
 
 .product-filter-tab {
   transition: background-color var(--duration-fast) var(--ease-standard),
-              color var(--duration-fast) var(--ease-standard),
-              box-shadow var(--duration-fast) var(--ease-standard);
+              color             var(--duration-fast) var(--ease-standard),
+              box-shadow        var(--duration-fast) var(--ease-standard);
 }
 
 .tech-tag {
   transition: background-color var(--duration-fast) var(--ease-standard),
-              border-color var(--duration-fast) var(--ease-standard),
-              color var(--duration-fast) var(--ease-standard);
+              border-color      var(--duration-fast) var(--ease-standard),
+              color             var(--duration-fast) var(--ease-standard);
 }
 
 .tech-tag:hover {
-  border-color: rgba(99, 102, 241, 0.5);
-  background-color: rgba(99, 102, 241, 0.15);
-  color: #c7d2fe;
+  border-color:     rgba(20, 184, 166, 0.45);
+  background-color: rgba(20, 184, 166, 0.12);
+  color:            #99f6e4; /* teal-200 */
 }
 
 /* Accessible Focus Ring */
@@ -153,71 +158,60 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 2px solid #818cf8;
+  outline:        2px solid var(--color-brand);
   outline-offset: 2px;
 }
 
-/* Form Controls & Validation States */
+/* Form Controls */
 #contact-form input,
 #contact-form select,
 #contact-form textarea {
-  transition: border-color var(--duration-fast) var(--ease-standard),
-              box-shadow var(--duration-fast) var(--ease-standard),
-              background-color var(--duration-fast) var(--ease-standard);
+  transition: border-color      var(--duration-fast) var(--ease-standard),
+              box-shadow        var(--duration-fast) var(--ease-standard),
+              background-color  var(--duration-fast) var(--ease-standard);
 }
 
 .input-error {
   border-color: #f43f5e !important;
-  box-shadow: 0 0 0 1px #f43f5e !important;
+  box-shadow:   0 0 0 1px #f43f5e !important;
 }
 
 .input-error:focus-visible {
-  outline: 2px solid #f43f5e !important;
+  outline:        2px solid #f43f5e !important;
   outline-offset: 2px;
 }
 
-/* Status Notifications */
+/* Form Status */
 #form-status {
-  transition: opacity var(--duration-normal) var(--ease-standard),
+  transition: opacity   var(--duration-normal) var(--ease-standard),
               transform var(--duration-normal) var(--ease-standard);
 }
 
-/* Back to Top Interactive Control */
+/* Back to Top */
 #back-to-top {
   transition: background-color var(--duration-fast) var(--ease-standard),
-              border-color var(--duration-fast) var(--ease-standard),
-              color var(--duration-fast) var(--ease-standard),
-              transform var(--duration-fast) var(--ease-standard);
+              border-color      var(--duration-fast) var(--ease-standard),
+              color             var(--duration-fast) var(--ease-standard),
+              transform         var(--duration-fast) var(--ease-standard);
 }
 
-#back-to-top:hover {
-  transform: translateY(-1px);
-}
+#back-to-top:hover  { transform: translateY(-1px); }
+#back-to-top:active { transform: translateY(0); }
 
-#back-to-top:active {
-  transform: translateY(0);
-}
-
-/* Floating WhatsApp Quick Contact Initiator */
+/* Floating WhatsApp */
 #floating-whatsapp {
-  transition: transform var(--duration-fast) var(--ease-standard),
-              box-shadow var(--duration-fast) var(--ease-standard),
-              background-color var(--duration-fast) var(--ease-standard);
+  transition: transform         var(--duration-fast) var(--ease-standard),
+              box-shadow        var(--duration-fast) var(--ease-standard),
+              background-color  var(--duration-fast) var(--ease-standard);
 }
 
-#floating-whatsapp:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 16px 32px -8px rgba(16, 185, 129, 0.45);
-}
+#floating-whatsapp:hover  { transform: translateY(-2px) scale(1.03); box-shadow: 0 16px 32px -8px rgba(16, 185, 129, 0.45); }
+#floating-whatsapp:active { transform: translateY(0) scale(0.98); }
 
-#floating-whatsapp:active {
-  transform: translateY(0) scale(0.98);
-}
-
-/* Logo Concepts Modal & Dialog */
+/* Logo Modal */
 #logo-modal::backdrop {
-  background: rgba(2, 6, 23, 0.85);
-  backdrop-filter: blur(8px);
+  background:           rgba(9, 9, 11, 0.88);
+  backdrop-filter:      blur(8px);
   -webkit-backdrop-filter: blur(8px);
 }
 
@@ -226,25 +220,36 @@ textarea:focus-visible {
 }
 
 @keyframes modal-pop-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95) translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+  from { opacity: 0; transform: scale(0.95) translateY(12px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0); }
 }
 
 .logo-concept-card {
   transition: border-color var(--duration-normal) var(--ease-standard),
-              transform var(--duration-normal) var(--ease-standard),
-              box-shadow var(--duration-normal) var(--ease-standard);
+              transform    var(--duration-normal) var(--ease-standard),
+              box-shadow   var(--duration-normal) var(--ease-standard);
 }
 
 .logo-concept-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(99, 102, 241, 0.5);
-  box-shadow: 0 16px 36px -12px rgba(99, 102, 241, 0.25);
+  transform:    translateY(-3px);
+  border-color: rgba(20, 184, 166, 0.45);
+  box-shadow:   0 16px 36px -12px rgba(20, 184, 166, 0.2);
 }
 
+/* Service Selection Chips */
+.service-chip {
+  transition: border-color     var(--duration-fast) var(--ease-standard),
+              background-color var(--duration-fast) var(--ease-standard),
+              color             var(--duration-fast) var(--ease-standard),
+              box-shadow        var(--duration-fast) var(--ease-standard);
+  cursor: pointer;
+}
+
+.service-chip:focus-visible {
+  outline:        2px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+.service-chip.border-teal-500 {
+  box-shadow: 0 0 0 1px rgba(20, 184, 166, 0.3);
+}

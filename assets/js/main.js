@@ -1,5 +1,5 @@
 /**
- * ConsultAnythingTech Main JavaScript
+ * CATech Main JavaScript
  * Handles accessible mobile navigation, header scroll elevation, and interaction controls.
  */
 
@@ -126,6 +126,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Service chip toggle
+  const serviceChips = document.querySelectorAll(".service-chip");
+  const serviceInput = document.getElementById("contact-service");
+
+  serviceChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      // Deselect all
+      serviceChips.forEach((c) => {
+        c.classList.remove("border-teal-500", "text-white", "bg-teal-600/20");
+        c.classList.add("border-zinc-700", "text-slate-300", "bg-zinc-900");
+      });
+      // Select clicked
+      chip.classList.remove("border-zinc-700", "text-slate-300", "bg-zinc-900");
+      chip.classList.add("border-teal-500", "text-white", "bg-teal-600/20");
+      // Update hidden input
+      if (serviceInput) serviceInput.value = chip.getAttribute("data-service") || "";
+    });
+  });
+
   // Dynamic Copyright Year
   const copyrightYearEl = document.getElementById("copyright-year");
   if (copyrightYearEl) {
@@ -206,7 +225,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    contactForm.addEventListener("submit", (event) => {
+    contactForm.addEventListener("submit", async (event) => {
       event.preventDefault();
       clearErrors();
 
@@ -218,48 +237,72 @@ document.addEventListener("DOMContentLoaded", () => {
       const messageVal = messageInput ? messageInput.value.trim() : "";
 
       if (!nameVal) {
-        setFieldError(nameInput, nameError, "Please enter your name.");
+        setFieldError(nameInput, nameError, "What should we call you?");
         isValid = false;
         if (!firstInvalidInput) firstInvalidInput = nameInput;
       }
 
       if (!emailVal) {
-        setFieldError(emailInput, emailError, "Please enter your email address.");
+        setFieldError(emailInput, emailError, "We need your email to get back to you.");
         isValid = false;
         if (!firstInvalidInput) firstInvalidInput = emailInput;
       } else if (!emailPattern.test(emailVal)) {
-        setFieldError(emailInput, emailError, "Please enter a valid email address.");
+        setFieldError(emailInput, emailError, "That doesn't look like a valid email address.");
         isValid = false;
         if (!firstInvalidInput) firstInvalidInput = emailInput;
       }
 
       if (!messageVal) {
-        setFieldError(messageInput, messageError, "Please enter your project overview or message.");
+        setFieldError(messageInput, messageError, "Tell us a bit about your project or what you need help with.");
         isValid = false;
         if (!firstInvalidInput) firstInvalidInput = messageInput;
       } else if (messageVal.length < 10) {
-        setFieldError(messageInput, messageError, "Message must be at least 10 characters.");
+        setFieldError(messageInput, messageError, "A little more detail helps us respond meaningfully.");
         isValid = false;
         if (!firstInvalidInput) firstInvalidInput = messageInput;
       }
 
       if (!isValid) {
-        if (formStatus) {
-          formStatus.textContent = "Please resolve the errors highlighted above.";
-          formStatus.className = "mb-6 p-4 rounded-xl text-sm font-medium bg-rose-950/80 border border-rose-800 text-rose-300 block";
-        }
-        if (firstInvalidInput) {
-          firstInvalidInput.focus();
-        }
+        if (firstInvalidInput) firstInvalidInput.focus();
         return;
       }
 
-      // Valid form submission
-      contactForm.reset();
-      if (formStatus) {
-        formStatus.innerHTML = "Thank you! Your inquiry has been received. We will respond within 24 business hours. You may also email us directly at <a href='mailto:consultanythingtech@gmail.com' class='underline hover:text-white font-mono'>consultanythingtech@gmail.com</a>.";
-        formStatus.className = "mb-6 p-4 rounded-xl text-sm font-medium bg-emerald-950/80 border border-emerald-800 text-emerald-300 block";
-        formStatus.focus();
+      // Disable submit button while sending
+      const submitBtn = contactForm.querySelector("button[type=submit]");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
+      }
+
+      try {
+        const formData = new FormData(contactForm);
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: formData,
+        });
+        const data = await response.json();
+
+        if (data.success) {
+          contactForm.reset();
+          if (formStatus) {
+            formStatus.innerHTML = "Message sent — we'll get back to you within 24 hours. You can also reach us directly at <a href='mailto:hello@catech.dev' class='underline hover:text-white font-mono'>hello@catech.dev</a>.";
+            formStatus.className = "mb-6 p-4 rounded-xl text-sm font-medium bg-emerald-950/80 border border-emerald-800 text-emerald-300 block";
+            formStatus.focus();
+          }
+        } else {
+          throw new Error(data.message || "Submission failed");
+        }
+      } catch (err) {
+        if (formStatus) {
+          formStatus.innerHTML = "Something went wrong. Please email us directly at <a href='mailto:hello@catech.dev' class='underline hover:text-white font-mono'>hello@catech.dev</a>.";
+          formStatus.className = "mb-6 p-4 rounded-xl text-sm font-medium bg-rose-950/80 border border-rose-800 text-rose-300 block";
+          formStatus.focus();
+        }
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = `<span>Send Inquiry</span><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M6 12L3.269 3.126A59.768 59.768 0 0121.485 12 59.77 59.77 0 013.27 20.876L5.999 12zm0 0h7.5" /></svg>`;
+        }
       }
     });
   }

@@ -1,8 +1,8 @@
-# ConsultAnythingTech
+# CATech
 
-> Official website and software studio portfolio for **ConsultAnythingTech**. Hosted live at [consultanything-tech.github.io](https://consultanything-tech.github.io).
+> Official website and software studio portfolio for **CATech**. Hosted live at [catech.dev](https://catech.dev).
 
-ConsultAnythingTech is a modern technology consultancy and digital product studio specializing in high-performance web and native engineering, cloud architecture, and intelligent agentic workflows.
+CATech is a modern technology consultancy and digital product studio specializing in high-performance web and native engineering, cloud architecture, and intelligent agentic workflows.
 
 ---
 
@@ -25,15 +25,15 @@ Production-grade SVG vector marks located in `assets/logos/`:
 - **Option 1 (Hex Prism)**: `assets/logos/option-1-hex-prism.svg` — Geometric isometric 3D prism with interconnected vertex data nodes.
 - **Option 2 (Interlocking Monogram)**: `assets/logos/option-2-interlocking-monogram.svg` — Interlocking "C" and "A" technical chevron glyphs with glowing apex.
 - **Option 3 (Circuit Delta)**: `assets/logos/option-3-circuit-delta.svg` — Quantum circuit delta vector signifying high-throughput engineering velocity.
-- **Option 4 (Infinity Code - Primary Official Logo)**: `assets/logos/option-4-infinity-code.svg` — Möbius infinity loop merging code braces `{ }`. Official brand mark adopted for ConsultAnythingTech.
+- **Option 4 (Infinity Code - Primary Official Logo)**: `assets/logos/option-4-infinity-code.svg` — Möbius infinity loop merging code braces `{ }`. Official brand mark adopted for CATech.
 
 ---
 
 ## Contact & Direct Channels
 
-- **Email**: [consultanythingtech@gmail.com](mailto:consultanythingtech@gmail.com)
+- **Email**: [hello@catech.dev](mailto:hello@catech.dev)
 - **Phone**: [+65 88240325](tel:+6588240325)
-- **WhatsApp**: [Chat on WhatsApp (+65 88240325)](https://wa.me/6588240325?text=Hello%20ConsultAnythingTech%2C%20I%27m%20reaching%20out%20from%20your%20official%20website%20regarding%20...)
+- **WhatsApp**: [Chat on WhatsApp (+65 88240325)](https://wa.me/6588240325?text=Hello%20CATech%2C%20I%27m%20reaching%20out%20from%20your%20official%20website%20regarding%20...)
 - **GitHub**: [github.com/consultanything-tech](https://github.com/consultanything-tech)
 
 ---
@@ -79,4 +79,4 @@ python3 tests/test_structure.py
 
 ## License
 
-&copy; 2026 ConsultAnythingTech. All rights reserved.
+&copy; 2026 CATech. All rights reserved.

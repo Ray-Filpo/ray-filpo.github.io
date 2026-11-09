@@ -23,7 +23,7 @@
   <text x="136" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="32" fill="#ffffff" text-anchor="middle">CA</text>
 
   <!-- Title -->
-  <text x="100" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="56" fill="#ffffff" letter-spacing="-1">ConsultAnythingTech</text>
+  <text x="100" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="800" font-size="56" fill="#ffffff" letter-spacing="-1">CATech</text>
   
   <!-- Subtitle -->
   <text x="100" y="340" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="600" font-size="32" fill="#818cf8">Technology Consultancy &amp; Digital Product Studio</text>
@@ -33,5 +33,5 @@
 
   <!-- Domain -->
   <rect x="100" y="490" width="360" height="48" rx="24" fill="#1e293b" stroke="#334155" stroke-width="1"/>
-  <text x="280" y="522" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="18" fill="#e2e8f0" text-anchor="middle">consultanything-tech.github.io</text>
+  <text x="280" y="522" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-weight="500" font-size="18" fill="#e2e8f0" text-anchor="middle">catech.dev</text>
 </svg>
