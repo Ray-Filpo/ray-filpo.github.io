@@ -20,6 +20,7 @@ class TestSiteStructure(unittest.TestCase):
         cls.js_path = REPO_ROOT / "assets" / "js" / "main.js"
         cls.robots_path = REPO_ROOT / "robots.txt"
         cls.sitemap_path = REPO_ROOT / "sitemap.xml"
+        cls.og_png_path = REPO_ROOT / "assets" / "images" / "og-card.png"
 
     def test_01_index_file_exists(self):
         """Verify index.html exists."""
@@ -164,6 +165,11 @@ class TestSiteStructure(unittest.TestCase):
             r"<main[^>]*id=[\"']main-content[\"']",
             "<main> landmark must have id='main-content' as target for skip link",
         )
+        self.assertRegex(
+            content,
+            r"<main[^>]*id=[\"']main-content[\"'][^>]*tabindex=[\"']-1[\"']|<main[^>]*tabindex=[\"']-1[\"'][^>]*id=[\"']main-content[\"']",
+            "<main id='main-content'> landmark must have tabindex='-1' for programmatic focus handling",
+        )
 
     def test_06_external_scripts_and_styles(self):
         """Verify Tailwind CSS script and custom stylesheet inclusion."""
@@ -290,6 +296,84 @@ class TestSiteStructure(unittest.TestCase):
                 tag,
                 services_content,
                 f"Services section should showcase modern technology tag '{tag}'",
+            )
+
+        # Checkmarks in deliverable list must have aria-hidden="true"
+        deliverable_svgs = re.findall(r'<li[^>]*>\s*(<svg[^>]*>)', services_content)
+        self.assertGreater(len(deliverable_svgs), 0, "Services section must contain deliverable items with checkmark svgs")
+        for svg_tag in deliverable_svgs:
+            self.assertIn(
+                'aria-hidden="true"',
+                svg_tag,
+                f"Checkmark SVG in deliverable list must include aria-hidden='true': {svg_tag}",
+            )
+
+    def test_11_og_card_image(self):
+        """Verify assets/images/og-card.png exists and is a valid non-empty file."""
+        self.assertTrue(self.og_png_path.exists(), "assets/images/og-card.png must exist on disk")
+        self.assertGreater(self.og_png_path.stat().st_size, 0, "assets/images/og-card.png must not be empty")
+
+    def test_12_products_section_portfolio_showcase(self):
+        """Verify products section has h2 heading, category tabs, and 4 in-house product cards."""
+        self.assertTrue(self.index_path.exists(), "index.html missing")
+        content = self.index_path.read_text(encoding="utf-8")
+
+        products_match = re.search(r'<section\s+[^>]*id=["\']products["\'][^>]*>(.*?)</section>', content, re.DOTALL)
+        self.assertIsNotNone(products_match, "#products section must exist")
+        products_content = products_match.group(1)
+
+        # Heading check
+        self.assertRegex(
+            products_content,
+            r'(?s)<h2[^>]*>.*?</h2>',
+            "#products section must have an h2 heading",
+        )
+
+        # Accessible category filter tabs (role="tablist", role="tab", aria-selected="true" for active filter)
+        self.assertRegex(
+            products_content,
+            r'role=["\']tablist["\']',
+            "#products section must contain category filter tabs with role='tablist'",
+        )
+        self.assertRegex(
+            products_content,
+            r'role=["\']tab["\'][^>]*aria-selected=["\']true["\']|aria-selected=["\']true["\'][^>]*role=["\']tab["\']',
+            "#products category tabs must have role='tab' and an active filter with aria-selected='true'",
+        )
+
+        # 4 in-house projects
+        projects = {
+            "HyperFetch": ["Swift", "macOS", "SwiftUI"],
+            "ProofPath": ["TypeScript", "Multi-Agent"],
+            "IndiaCrafted": ["Next.js", "Edge"],
+            "SpendWise": ["Financial planning"],
+        }
+        for proj_name, keywords in projects.items():
+            self.assertIn(
+                proj_name,
+                products_content,
+                f"#products must contain product card for '{proj_name}'",
+            )
+            for kw in keywords:
+                self.assertIn(
+                    kw,
+                    products_content,
+                    f"#products card for '{proj_name}' must include technology/domain keyword '{kw}'",
+                )
+
+        # Each product card must have data-category attribute for interactive filtering
+        self.assertRegex(
+            products_content,
+            r'data-category=["\'][^"\']+["\']',
+            "#products cards must include data-category attributes for filtering",
+        )
+
+        # Links to repositories or project pages
+        for proj_name in projects.keys():
+            self.assertRegex(
+                products_content,
+                rf'(?s){proj_name}.*?<a\s+[^>]*href=["\'](https://github\.com/[^"\']+|#[^"\']+|https?://[^"\']+)["\']',
+                f"#products card for '{proj_name}' must contain a project/repo link",
             )
 
 
