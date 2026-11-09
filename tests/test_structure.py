@@ -21,6 +21,7 @@ class TestSiteStructure(unittest.TestCase):
         cls.robots_path = REPO_ROOT / "robots.txt"
         cls.sitemap_path = REPO_ROOT / "sitemap.xml"
         cls.og_png_path = REPO_ROOT / "assets" / "images" / "og-card.png"
+        cls.workflow_path = REPO_ROOT / ".github" / "workflows" / "deploy.yml"
 
     def test_01_index_file_exists(self):
         """Verify index.html exists."""
@@ -586,6 +587,86 @@ class TestSiteStructure(unittest.TestCase):
         # styles.css form focus and error states
         css_content = self.css_path.read_text(encoding="utf-8")
         self.assertIn(".input-error", css_content, "styles.css must define .input-error styling")
+
+    def test_17_github_actions_workflow(self):
+        """Verify GitHub Actions deployment workflow and HTML polish attributes."""
+        # 1. Workflow file exists
+        self.assertTrue(
+            self.workflow_path.exists(),
+            ".github/workflows/deploy.yml must exist",
+        )
+        workflow_content = self.workflow_path.read_text(encoding="utf-8")
+
+        # 2. Push trigger for main and workflow_dispatch
+        self.assertRegex(
+            workflow_content,
+            r'push:\s*\n\s*branches:\s*\n\s*-\s*main',
+            "Workflow must trigger on push to main branch",
+        )
+        self.assertIn(
+            "workflow_dispatch:",
+            workflow_content,
+            "Workflow must support workflow_dispatch trigger",
+        )
+
+        # 3. Permissions: pages: write, id-token: write, contents: read
+        self.assertRegex(
+            workflow_content,
+            r'pages:\s*write',
+            "Workflow must specify pages: write permission",
+        )
+        self.assertRegex(
+            workflow_content,
+            r'id-token:\s*write',
+            "Workflow must specify id-token: write permission",
+        )
+        self.assertRegex(
+            workflow_content,
+            r'contents:\s*read',
+            "Workflow must specify contents: read permission",
+        )
+
+        # 4. Executes test suite python3 tests/test_structure.py
+        self.assertIn(
+            "python3 tests/test_structure.py",
+            workflow_content,
+            "Workflow must execute python3 tests/test_structure.py",
+        )
+
+        # 5. Uses actions/upload-pages-artifact@v3 and actions/deploy-pages@v4
+        self.assertIn(
+            "actions/upload-pages-artifact@v3",
+            workflow_content,
+            "Workflow must use actions/upload-pages-artifact@v3",
+        )
+        self.assertIn(
+            "actions/deploy-pages@v4",
+            workflow_content,
+            "Workflow must use actions/deploy-pages@v4",
+        )
+
+        # 6. Verify index.html tabindex="-1" on #form-status and native fallback on #contact-form
+        index_content = self.index_path.read_text(encoding="utf-8")
+        self.assertRegex(
+            index_content,
+            r'<div[^>]*id=["\']form-status["\'][^>]*tabindex=["\']-1["\']|<div[^>]*tabindex=["\']-1["\'][^>]*id=["\']form-status["\']',
+            "#form-status must have tabindex='-1' for programmatic accessibility focus",
+        )
+        self.assertRegex(
+            index_content,
+            r'<form[^>]*id=["\']contact-form["\'][^>]*action=["\']mailto:contact@consultanything\.tech["\']|<form[^>]*action=["\']mailto:contact@consultanything\.tech["\'][^>]*id=["\']contact-form["\']',
+            "#contact-form must have action='mailto:contact@consultanything.tech' as native fallback",
+        )
+        self.assertRegex(
+            index_content,
+            r'<form[^>]*id=["\']contact-form["\'][^>]*method=["\']POST["\']|<form[^>]*method=["\']POST["\'][^>]*id=["\']contact-form["\']',
+            "#contact-form must have method='POST' as native fallback",
+        )
+        self.assertRegex(
+            index_content,
+            r'<form[^>]*id=["\']contact-form["\'][^>]*enctype=["\']text/plain["\']|<form[^>]*enctype=["\']text/plain["\'][^>]*id=["\']contact-form["\']',
+            "#contact-form must have enctype='text/plain' as native fallback",
+        )
 
 
 if __name__ == "__main__":
