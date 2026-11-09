@@ -731,6 +731,21 @@ class TestSiteStructure(unittest.TestCase):
                 f"Logo concepts modal in index.html must reference {opt}",
             )
 
+        # Verify logo-mark.svg reflects Option 4 Möbius Infinity Code emblem
+        logo_mark_content = (logo_dir / "logo-mark.svg").read_text(encoding="utf-8")
+        self.assertRegex(
+            logo_mark_content,
+            r'(?i)(?:inf-grad|Möbius|infinity|stroke-width=["\']10["\'])',
+            "assets/logos/logo-mark.svg must reflect Option 4 Möbius Infinity Code emblem",
+        )
+
+        # Verify Option 4 is marked as Active Official Logo in the modal
+        self.assertIn(
+            "Active Official Logo",
+            index_content,
+            "index.html #logo-modal must display 'Active Official Logo' badge on Option 4",
+        )
+
     def test_19_floating_whatsapp_initiator(self):
         """Verify floating quick-contact WhatsApp initiator button exists and is configured properly."""
         index_content = self.index_path.read_text(encoding="utf-8")
@@ -759,7 +774,7 @@ class TestSiteStructure(unittest.TestCase):
             "HyperFetch": "https://github.com/consultanything-tech/hyperfetch-app",
             "ProofPath": "https://github.com/consultanything-tech/ProofPath",
             "IndiaCrafted": "https://github.com/consultanything-tech/indiacrafted-homepage-mockup",
-            "SpendWise": "https://github.com/consultanything-tech/spendwise",
+            "SpendWise": "https://spendwise.experthub.store/",
         }
 
         for name, expected_url in portfolio_items.items():
@@ -773,6 +788,13 @@ class TestSiteStructure(unittest.TestCase):
                 index_content,
                 f"index.html must link project '{name}' to public URL '{expected_url}'",
             )
+
+        # Retain SpendWise GitHub repo link
+        self.assertIn(
+            "https://github.com/consultanything-tech/spendwise",
+            index_content,
+            "index.html must retain SpendWise repository link",
+        )
 
 
 if __name__ == "__main__":

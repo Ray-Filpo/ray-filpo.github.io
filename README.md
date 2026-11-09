@@ -14,18 +14,18 @@ ConsultAnythingTech is a modern technology consultancy and digital product studi
 - **HyperFetch**: [github.com/consultanything-tech/hyperfetch-app](https://github.com/consultanything-tech/hyperfetch-app) — High-performance native macOS download manager engineered with Swift 6 and modern SwiftUI.
 - **ProofPath**: [github.com/consultanything-tech/ProofPath](https://github.com/consultanything-tech/ProofPath) — Automated QA and browser validation framework with multi-agent orchestration.
 - **IndiaCrafted**: [github.com/consultanything-tech/indiacrafted-homepage-mockup](https://github.com/consultanything-tech/indiacrafted-homepage-mockup) — Full-stack artisan marketplace and edge storefront built on Next.js.
-- **SpendWise**: [github.com/consultanything-tech/spendwise](https://github.com/consultanything-tech/spendwise) — Privacy-conscious personal finance platform featuring predictive cash flow forecasting.
+- **SpendWise**: [spendwise.experthub.store](https://spendwise.experthub.store/) ([GitHub](https://github.com/consultanything-tech/spendwise)) — Privacy-conscious personal finance platform featuring predictive cash flow forecasting.
 
 ---
 
 ## Brand Assets & Vector Logos
 
 Production-grade SVG vector marks located in `assets/logos/`:
-- **Primary Mark**: `assets/logos/logo-mark.svg` & `assets/logos/logo.svg`
+- **Primary Mark**: `assets/logos/logo-mark.svg` & `assets/logos/logo.svg` (Möbius Infinity Code Loop emblem)
 - **Option 1 (Hex Prism)**: `assets/logos/option-1-hex-prism.svg` — Geometric isometric 3D prism with interconnected vertex data nodes.
-- **Option 2 (Interlocking Monogram - Selected Primary)**: `assets/logos/option-2-interlocking-monogram.svg` — Interlocking "C" and "A" technical chevron glyphs with glowing apex.
+- **Option 2 (Interlocking Monogram)**: `assets/logos/option-2-interlocking-monogram.svg` — Interlocking "C" and "A" technical chevron glyphs with glowing apex.
 - **Option 3 (Circuit Delta)**: `assets/logos/option-3-circuit-delta.svg` — Quantum circuit delta vector signifying high-throughput engineering velocity.
-- **Option 4 (Infinity Code)**: `assets/logos/option-4-infinity-code.svg` — Möbius infinity loop merging code braces `{ }`.
+- **Option 4 (Infinity Code - Primary Official Logo)**: `assets/logos/option-4-infinity-code.svg` — Möbius infinity loop merging code braces `{ }`. Official brand mark adopted for ConsultAnythingTech.
 
 ---
 
