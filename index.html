@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ConsultAnythingTech | Technology Consultancy &amp; Digital Product Studio</title>
+  <meta name="description" content="ConsultAnythingTech is a modern technology consultancy and digital product studio specializing in high-performance web and native engineering, cloud architecture, and intelligent agentic workflows.">
+  <link rel="canonical" href="https://consultanything-tech.github.io/">
+
+  <!-- OpenGraph Metadata -->
+  <meta property="og:title" content="ConsultAnythingTech | Technology Consultancy &amp; Digital Product Studio">
+  <meta property="og:description" content="Specializing in high-performance web and native engineering, cloud architecture, and intelligent agentic workflows.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://consultanything-tech.github.io/">
+  <meta property="og:site_name" content="ConsultAnythingTech">
+
+  <!-- Twitter Card Metadata -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ConsultAnythingTech | Technology Consultancy &amp; Digital Product Studio">
+  <meta name="twitter:description" content="Specializing in high-performance web and native engineering, cloud architecture, and intelligent agentic workflows.">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "ConsultAnythingTech",
+    "url": "https://consultanything-tech.github.io",
+    "description": "Technology consultancy and digital product studio specializing in high-performance web and native engineering, cloud architecture, and intelligent agentic workflows.",
+    "sameAs": [
+      "https://github.com/consultanything-tech"
+    ]
+  }
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
+
+  <!-- Ambient Background Lighting -->
+  <div class="relative w-full overflow-hidden">
+    <div class="ambient-glow ambient-glow-indigo top-0 left-1/4 w-[500px] h-[500px]"></div>
+    <div class="ambient-glow ambient-glow-cyan top-40 right-1/4 w-[400px] h-[400px]"></div>
+  </div>
+
+  <!-- Header Navigation -->
+  <header id="main-header" class="fixed top-0 left-0 right-0 z-50 glass-header">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+      <!-- Brand Logo / Wordmark -->
+      <a href="#" class="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 rounded-md">
+        <div class="w-9 h-9 rounded-lg bg-gradient-to-tr from-indigo-600 to-cyan-500 flex items-center justify-center font-bold text-white shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform">
+          CA
+        </div>
+        <span class="text-xl font-semibold tracking-tight text-white group-hover:text-indigo-300 transition-colors">
+          ConsultAnythingTech
+        </span>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300" aria-label="Main Navigation">
+        <a href="#services" class="hover:text-white transition-colors">Services</a>
+        <a href="#products" class="hover:text-white transition-colors">Products</a>
+        <a href="#capabilities" class="hover:text-white transition-colors">Capabilities</a>
+        <a href="#about" class="hover:text-white transition-colors">About</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+      </nav>
+
+      <!-- Desktop Action CTA -->
+      <div class="hidden md:flex items-center gap-4">
+        <a href="#contact" class="inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-500 transition-colors shadow-sm shadow-indigo-600/30">
+          Get in Touch
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="flex md:hidden">
+        <button id="mobile-menu-btn" type="button" aria-label="Toggle navigation menu" aria-expanded="false" class="p-2 text-slate-400 hover:text-white hover:bg-slate-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400">
+          <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-slate-800/80 bg-slate-950/95 backdrop-blur-md px-4 pt-3 pb-6 space-y-2">
+      <nav class="flex flex-col space-y-2" aria-label="Mobile Navigation">
+        <a href="#services" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-900">Services</a>
+        <a href="#products" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-900">Products</a>
+        <a href="#capabilities" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-900">Capabilities</a>
+        <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-900">About</a>
+        <a href="#contact" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-300 hover:text-white hover:bg-slate-900">Contact</a>
+      </nav>
+      <div class="pt-2">
+        <a href="#contact" class="mobile-nav-link block text-center w-full px-4 py-2.5 text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-500 transition-colors">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content Structure -->
+  <main class="relative z-10 pt-24 pb-20">
+    <!-- Hero Placeholder Section -->
+    <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-950/70 text-indigo-400 border border-indigo-800/50 mb-6">
+        <span>Software Studio &amp; Technical Advisory</span>
+      </div>
+      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
+        Engineering High-Performance Digital Products and Intelligent Systems
+      </h1>
+      <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
+        Specializing in high-performance web and native engineering, cloud architecture, and intelligent agentic workflows.
+      </p>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="border-t border-slate-800/60 pt-16">
+        <h2 class="text-3xl font-bold tracking-tight text-white">Consulting Services</h2>
+        <p class="mt-2 text-slate-400">Architecture, engineering, and performance advisory for modern product teams.</p>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="border-t border-slate-800/60 pt-16">
+        <h2 class="text-3xl font-bold tracking-tight text-white">Featured Products &amp; Projects</h2>
+        <p class="mt-2 text-slate-400">Innovative digital tools and native client software built in-house.</p>
+      </div>
+    </section>
+
+    <!-- Capabilities Section -->
+    <section id="capabilities" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="border-t border-slate-800/60 pt-16">
+        <h2 class="text-3xl font-bold tracking-tight text-white">Technical Capabilities</h2>
+        <p class="mt-2 text-slate-400">Deep domain expertise across distributed systems, AI, and native engineering.</p>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="border-t border-slate-800/60 pt-16">
+        <h2 class="text-3xl font-bold tracking-tight text-white">About ConsultAnythingTech</h2>
+        <p class="mt-2 text-slate-400">An independent engineering studio focused on speed, precision, and reliable execution.</p>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="border-t border-slate-800/60 pt-16">
+        <h2 class="text-3xl font-bold tracking-tight text-white">Get in Touch</h2>
+        <p class="mt-2 text-slate-400">Start a conversation regarding your project or technical advisory needs.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Semantic Footer -->
+  <footer class="border-t border-slate-800/80 bg-slate-950 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-7 h-7 rounded-md bg-gradient-to-tr from-indigo-600 to-cyan-500 flex items-center justify-center font-bold text-xs text-white">
+          CA
+        </div>
+        <span class="text-sm font-semibold text-white">ConsultAnythingTech</span>
+      </div>
+
+      <p class="text-sm text-slate-500">
+        &copy; 2026 ConsultAnythingTech. All rights reserved. Hosted on GitHub Pages.
+      </p>
+
+      <div class="flex items-center gap-6 text-sm text-slate-400">
+        <a href="https://github.com/consultanything-tech" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">GitHub</a>
+        <a href="#contact" class="hover:text-white transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script initialization -->
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>

@@ -6,7 +6,7 @@ ConsultAnythingTech is a modern technology consultancy and digital product studi
 
 ---
 
-## 🚀 Featured Products & Projects
+## Featured Products & Projects
 
 - **HyperFetch**: High-performance native macOS download accelerator engineered with Swift 6 and modern SwiftUI.
 - **ProofPath**: Automated QA and browser validation framework with multi-modal proof generation for AI hackathons and CI/CD pipelines.
@@ -15,7 +15,7 @@ ConsultAnythingTech is a modern technology consultancy and digital product studi
 
 ---
 
-## 🛠️ Consulting Services
+## Consulting Services
 
 1. **Cloud & Distributed Architecture**: Cloud native systems, serverless infrastructure, zero-trust security, and scalable backend services (GCP, AWS, Cloudflare).
 2. **High-Performance Web & Native Apps**: Ultra-fast web apps (React, Next.js, Tailwind CSS) and native client software (Swift, macOS/iOS).
@@ -24,7 +24,7 @@ ConsultAnythingTech is a modern technology consultancy and digital product studi
 
 ---
 
-## 💻 Tech Stack & Architecture
+## Tech Stack & Architecture
 
 - **Frontend**: Semantic HTML5, Tailwind CSS, Vanilla JavaScript, Lucide SVG Icons.
 - **Hosting & CI/CD**: GitHub Pages, GitHub Actions (`actions/deploy-pages`).
@@ -32,7 +32,7 @@ ConsultAnythingTech is a modern technology consultancy and digital product studi
 
 ---
 
-## 🏃 Local Development
+## Local Development
 
 Run any static HTTP server from the project root:
 
@@ -54,6 +54,6 @@ python3 tests/test_structure.py
 
 ---
 
-## 📄 License
+## License
 
 &copy; 2026 ConsultAnythingTech. All rights reserved.

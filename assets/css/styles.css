@@ -1,0 +1,105 @@
+/* ==========================================================================
+   ConsultAnythingTech Design System & Motion Tokens
+   Adheres to transitions.dev motion guidelines & WCAG accessibility standards
+   ========================================================================== */
+
+:root {
+  /* Motion Tokens (transitions.dev) */
+  --duration-instant: 50ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --duration-slower: 600ms;
+
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --ease-accelerate: cubic-bezier(0.4, 0, 1, 1);
+
+  --distance-sm: 4px;
+  --distance-md: 8px;
+  --distance-lg: 16px;
+
+  /* Header height variable for scroll offset */
+  --header-height: 4.5rem;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Base Layout & Typography Defaults */
+html {
+  scroll-padding-top: var(--header-height);
+  color-scheme: dark;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background-color: #030712; /* Tailwind slate-950 */
+  color: #f8fafc; /* Tailwind slate-50 */
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Header */
+.glass-header {
+  background: rgba(3, 7, 18, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  transition: background-color var(--duration-normal) var(--ease-standard),
+              border-color var(--duration-normal) var(--ease-standard);
+}
+
+.glass-header.scrolled {
+  background: rgba(3, 7, 18, 0.95);
+  border-bottom-color: rgba(99, 102, 241, 0.2);
+}
+
+/* Radial Ambient Glow Accents */
+.ambient-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+.ambient-glow-indigo {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.35) 0%, transparent 70%);
+}
+
+.ambient-glow-cyan {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, transparent 70%);
+}
+
+/* Interactive Card Transitions */
+.interactive-card {
+  transition: transform var(--duration-normal) var(--ease-standard),
+              border-color var(--duration-normal) var(--ease-standard),
+              box-shadow var(--duration-normal) var(--ease-standard);
+}
+
+.interactive-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.15);
+}
+
+/* Accessible Focus Ring */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #818cf8;
+  outline-offset: 2px;
+}
