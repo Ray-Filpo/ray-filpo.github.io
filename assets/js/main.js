@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     filterTabs.forEach((tab) => {
       const isSelected = tab === activeTab;
       tab.setAttribute("aria-selected", String(isSelected));
+      tab.setAttribute("tabindex", isSelected ? "0" : "-1");
       if (isSelected) {
         tab.classList.add("text-white", "bg-indigo-600", "shadow-sm", "shadow-indigo-600/30");
         tab.classList.remove("text-slate-400", "hover:text-white", "hover:bg-slate-800/60");
@@ -92,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if (card.classList.contains("product-card-hidden")) {
               card.classList.add("hidden");
             }
-          }, 200);
+          }, 250);
         }
       }
     });

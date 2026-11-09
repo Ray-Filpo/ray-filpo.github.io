@@ -437,7 +437,7 @@
           <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-cyan-950/80 text-cyan-400 border border-cyan-800/50 mb-4">
             <span>Studio Incubator</span>
           </div>
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+          <h2 id="products-heading" class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
             In-House Products &amp; Portfolio
           </h2>
           <p class="mt-4 text-base sm:text-lg text-slate-400 leading-relaxed">
@@ -448,23 +448,23 @@
         <!-- Category Filter Tabs -->
         <div class="flex items-center justify-center mb-12" role="region" aria-label="Product categories filter">
           <div class="inline-flex p-1.5 rounded-xl bg-slate-900/90 border border-slate-800 backdrop-blur-md gap-1" role="tablist" aria-label="Filter products by domain">
-            <button type="button" role="tab" id="tab-all" aria-selected="true" aria-controls="products-grid" data-filter="all" class="product-filter-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-white bg-indigo-600 shadow-sm shadow-indigo-600/30">
+            <button type="button" role="tab" id="tab-all" aria-selected="true" tabindex="0" aria-controls="products-grid" data-filter="all" class="product-filter-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-white bg-indigo-600 shadow-sm shadow-indigo-600/30">
               All Products
             </button>
-            <button type="button" role="tab" id="tab-apps" aria-selected="false" aria-controls="products-grid" data-filter="apps" class="product-filter-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white hover:bg-slate-800/60">
+            <button type="button" role="tab" id="tab-apps" aria-selected="false" tabindex="-1" aria-controls="products-grid" data-filter="apps" class="product-filter-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white hover:bg-slate-800/60">
               Native Apps
             </button>
-            <button type="button" role="tab" id="tab-ai" aria-selected="false" aria-controls="products-grid" data-filter="ai" class="product-filter-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white hover:bg-slate-800/60">
+            <button type="button" role="tab" id="tab-ai" aria-selected="false" tabindex="-1" aria-controls="products-grid" data-filter="ai" class="product-filter-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white hover:bg-slate-800/60">
               AI &amp; Automation
             </button>
-            <button type="button" role="tab" id="tab-web" aria-selected="false" aria-controls="products-grid" data-filter="web" class="product-filter-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white hover:bg-slate-800/60">
+            <button type="button" role="tab" id="tab-web" aria-selected="false" tabindex="-1" aria-controls="products-grid" data-filter="web" class="product-filter-tab px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all text-slate-400 hover:text-white hover:bg-slate-800/60">
               Web Platforms
             </button>
           </div>
         </div>
 
         <!-- Products Grid -->
-        <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8" role="region" aria-live="polite">
+        <div id="products-grid" class="grid grid-cols-1 md:grid-cols-2 gap-8" role="region" aria-labelledby="products-heading" aria-live="polite">
           <!-- Card 1: HyperFetch -->
           <article data-category="apps" class="product-card rounded-2xl p-8 bg-slate-900/60 border border-slate-800 backdrop-blur-md flex flex-col justify-between">
             <div>
@@ -499,7 +499,7 @@
 
             <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between">
               <span class="text-xs text-slate-400">Desktop Utility &bull; Open Source</span>
-              <a href="https://github.com/consultanything-tech/HyperFetch" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
+              <a href="https://github.com/consultanything-tech/HyperFetch" target="_blank" rel="noopener noreferrer" aria-label="View HyperFetch repository on GitHub (opens in new tab)" class="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
                 <span>View Repository</span>
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -542,7 +542,7 @@
 
             <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between">
               <span class="text-xs text-slate-400">Testing Harness &bull; Developer Tooling</span>
-              <a href="https://github.com/consultanything-tech/ProofPath" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
+              <a href="https://github.com/consultanything-tech/ProofPath" target="_blank" rel="noopener noreferrer" aria-label="View ProofPath repository on GitHub (opens in new tab)" class="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
                 <span>View Repository</span>
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -585,7 +585,7 @@
 
             <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between">
               <span class="text-xs text-slate-400">E-Commerce &bull; Global Edge</span>
-              <a href="https://github.com/consultanything-tech/IndiaCrafted" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
+              <a href="https://github.com/consultanything-tech/IndiaCrafted" target="_blank" rel="noopener noreferrer" aria-label="View IndiaCrafted repository on GitHub (opens in new tab)" class="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
                 <span>View Repository</span>
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
@@ -628,7 +628,7 @@
 
             <div class="pt-6 border-t border-slate-800/80 flex items-center justify-between">
               <span class="text-xs text-slate-400">FinTech &bull; Local-First Architecture</span>
-              <a href="https://github.com/consultanything-tech/SpendWise" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
+              <a href="https://github.com/consultanything-tech/SpendWise" target="_blank" rel="noopener noreferrer" aria-label="View SpendWise repository on GitHub (opens in new tab)" class="inline-flex items-center gap-1.5 text-sm font-semibold text-indigo-400 hover:text-indigo-300 transition-colors">
                 <span>View Repository</span>
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />

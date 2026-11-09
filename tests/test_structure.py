@@ -322,11 +322,18 @@ class TestSiteStructure(unittest.TestCase):
         self.assertIsNotNone(products_match, "#products section must exist")
         products_content = products_match.group(1)
 
-        # Heading check
+        # Heading check with id="products-heading"
         self.assertRegex(
             products_content,
-            r'(?s)<h2[^>]*>.*?</h2>',
-            "#products section must have an h2 heading",
+            r'(?s)<h2[^>]*id=["\']products-heading["\'][^>]*>.*?</h2>',
+            "#products section must have an h2 heading with id='products-heading'",
+        )
+
+        # Products grid with aria-labelledby="products-heading"
+        self.assertRegex(
+            products_content,
+            r'<div[^>]*id=["\']products-grid["\'][^>]*aria-labelledby=["\']products-heading["\']|<div[^>]*aria-labelledby=["\']products-heading["\'][^>]*id=["\']products-grid["\']',
+            "#products-grid must specify aria-labelledby='products-heading'",
         )
 
         # Accessible category filter tabs (role="tablist", role="tab", aria-selected="true" for active filter)
@@ -340,6 +347,19 @@ class TestSiteStructure(unittest.TestCase):
             r'role=["\']tab["\'][^>]*aria-selected=["\']true["\']|aria-selected=["\']true["\'][^>]*role=["\']tab["\']',
             "#products category tabs must have role='tab' and an active filter with aria-selected='true'",
         )
+
+        # Roving tabindex: active tab tabindex="0", inactive tabs tabindex="-1"
+        self.assertRegex(
+            products_content,
+            r'<button[^>]*id=["\']tab-all["\'][^>]*tabindex=["\']0["\']|<button[^>]*tabindex=["\']0["\'][^>]*id=["\']tab-all["\']',
+            "Active filter tab #tab-all must have tabindex='0'",
+        )
+        for inactive_id in ["tab-apps", "tab-ai", "tab-web"]:
+            self.assertRegex(
+                products_content,
+                rf'<button[^>]*id=["\']{inactive_id}["\'][^>]*tabindex=["\']-1["\']|<button[^>]*tabindex=["\']-1["\'][^>]*id=["\']{inactive_id}["\']',
+                f"Inactive filter tab #{inactive_id} must have tabindex='-1'",
+            )
 
         # 4 in-house projects
         projects = {
@@ -368,13 +388,31 @@ class TestSiteStructure(unittest.TestCase):
             "#products cards must include data-category attributes for filtering",
         )
 
-        # Links to repositories or project pages
+        # Links to repositories with descriptive accessible names
         for proj_name in projects.keys():
             self.assertRegex(
                 products_content,
                 rf'(?s){proj_name}.*?<a\s+[^>]*href=["\'](https://github\.com/[^"\']+|#[^"\']+|https?://[^"\']+)["\']',
                 f"#products card for '{proj_name}' must contain a project/repo link",
             )
+            self.assertRegex(
+                products_content,
+                rf'(?s){proj_name}.*?<a\s+[^>]*aria-label=["\']View {proj_name} repository on GitHub \(opens in new tab\)["\']',
+                f"#products card for '{proj_name}' must have descriptive aria-label including project name and '(opens in new tab)'",
+            )
+
+        # Verify JS implements roving tabindex and 250ms duration matching design tokens
+        js_content = self.js_path.read_text(encoding="utf-8")
+        self.assertIn(
+            'tab.setAttribute("tabindex", isSelected ? "0" : "-1");',
+            js_content,
+            "main.js must update tabindex on filter tabs during selection",
+        )
+        self.assertIn(
+            "250",
+            js_content,
+            "main.js hiding transition timeout must align with --duration-normal (250ms)",
+        )
 
 
 if __name__ == "__main__":
