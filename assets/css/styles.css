@@ -151,7 +151,49 @@ body {
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
+select:focus-visible,
 textarea:focus-visible {
   outline: 2px solid #818cf8;
   outline-offset: 2px;
+}
+
+/* Form Controls & Validation States */
+#contact-form input,
+#contact-form select,
+#contact-form textarea {
+  transition: border-color var(--duration-fast) var(--ease-standard),
+              box-shadow var(--duration-fast) var(--ease-standard),
+              background-color var(--duration-fast) var(--ease-standard);
+}
+
+.input-error {
+  border-color: #f43f5e !important;
+  box-shadow: 0 0 0 1px #f43f5e !important;
+}
+
+.input-error:focus-visible {
+  outline: 2px solid #f43f5e !important;
+  outline-offset: 2px;
+}
+
+/* Status Notifications */
+#form-status {
+  transition: opacity var(--duration-normal) var(--ease-standard),
+              transform var(--duration-normal) var(--ease-standard);
+}
+
+/* Back to Top Interactive Control */
+#back-to-top {
+  transition: background-color var(--duration-fast) var(--ease-standard),
+              border-color var(--duration-fast) var(--ease-standard),
+              color var(--duration-fast) var(--ease-standard),
+              transform var(--duration-fast) var(--ease-standard);
+}
+
+#back-to-top:hover {
+  transform: translateY(-1px);
+}
+
+#back-to-top:active {
+  transform: translateY(0);
 }

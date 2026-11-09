@@ -414,6 +414,179 @@ class TestSiteStructure(unittest.TestCase):
             "main.js hiding transition timeout must align with --duration-normal (250ms)",
         )
 
+    def test_13_capabilities_section(self):
+        """Verify capabilities section has h2 and categorized technical stacks."""
+        self.assertTrue(self.index_path.exists(), "index.html missing")
+        content = self.index_path.read_text(encoding="utf-8")
+
+        cap_match = re.search(r'<section\s+[^>]*id=["\']capabilities["\'][^>]*>(.*?)</section>', content, re.DOTALL)
+        self.assertIsNotNone(cap_match, "#capabilities section must exist")
+        cap_content = cap_match.group(1)
+
+        # Has an h2 heading
+        self.assertRegex(
+            cap_content,
+            r'(?s)<h2[^>]*>.*?Technical Capabilities.*?</h2>',
+            "#capabilities section must have an h2 heading",
+        )
+
+        # Categorized stacks
+        categories = [
+            r"Languages(?:\s*&|\s+and)?\s+Systems",
+            r"Cloud(?:\s*&|\s+and|\s*/)?\s*(?:Edge\s+)?Infrastructure",
+            r"(?:Modern\s+)?Web\s+Frameworks",
+            r"AI(?:\s*&|\s+and)?\s+Security",
+        ]
+        for cat_regex in categories:
+            self.assertRegex(
+                cap_content,
+                rf'(?i){cat_regex}',
+                f"#capabilities section must contain category matching '{cat_regex}'",
+            )
+
+        # Sample technologies in categories
+        for tech in ["Rust", "Go", "TypeScript", "Swift", "Kubernetes", "Next.js", "PyTorch"]:
+            self.assertIn(
+                tech,
+                cap_content,
+                f"#capabilities section must include technical skill chip '{tech}'",
+            )
+
+    def test_14_about_section(self):
+        """Verify about section has h2 heading and outlines core engineering principles."""
+        self.assertTrue(self.index_path.exists(), "index.html missing")
+        content = self.index_path.read_text(encoding="utf-8")
+
+        about_match = re.search(r'<section\s+[^>]*id=["\']about["\'][^>]*>(.*?)</section>', content, re.DOTALL)
+        self.assertIsNotNone(about_match, "#about section must exist")
+        about_content = about_match.group(1)
+
+        # Has an h2 heading
+        self.assertRegex(
+            about_content,
+            r'(?s)<h2[^>]*>.*?About ConsultAnythingTech.*?</h2>',
+            "#about section must have an h2 heading",
+        )
+
+        # Core engineering principles
+        principles = [
+            r"Zero-Bloat|Minimal\s+Dependencies",
+            r"Production\s+Verification|Test-Driven",
+            r"Senior(?:\s+Technical)?\s+Leadership|Engineering\s+Pragmatism",
+        ]
+        for principle in principles:
+            self.assertRegex(
+                about_content,
+                rf'(?i){principle}',
+                f"#about section must outline core principle matching '{principle}'",
+            )
+
+    def test_15_contact_section_and_form(self):
+        """Verify contact section has h2, accessible form with required inputs, and direct contact links."""
+        self.assertTrue(self.index_path.exists(), "index.html missing")
+        content = self.index_path.read_text(encoding="utf-8")
+
+        contact_match = re.search(r'<section\s+[^>]*id=["\']contact["\'][^>]*>(.*?)</section>', content, re.DOTALL)
+        self.assertIsNotNone(contact_match, "#contact section must exist")
+        contact_content = contact_match.group(1)
+
+        # Has an h2 heading
+        self.assertRegex(
+            contact_content,
+            r'(?s)<h2[^>]*>.*?</h2>',
+            "#contact section must have an h2 heading",
+        )
+
+        # Contact form with id="contact-form"
+        self.assertRegex(
+            contact_content,
+            r'<form\s+[^>]*id=["\']contact-form["\']',
+            "#contact section must contain a form with id='contact-form'",
+        )
+
+        # Accessible inputs: Name, Email, Service, Message, Submit button
+        self.assertRegex(
+            contact_content,
+            r'<input[^>]*id=["\']contact-name["\'][^>]*required|<input[^>]*required[^>]*id=["\']contact-name["\']',
+            "Name input with id='contact-name' and required attribute must exist",
+        )
+        self.assertRegex(
+            contact_content,
+            r'<input[^>]*id=["\']contact-email["\'][^>]*type=["\']email["\'][^>]*required|'
+            r'<input[^>]*type=["\']email["\'][^>]*id=["\']contact-email["\'][^>]*required|'
+            r'<input[^>]*required[^>]*id=["\']contact-email["\'][^>]*type=["\']email["\']',
+            "Email input with id='contact-email', type='email', and required attribute must exist",
+        )
+        self.assertRegex(
+            contact_content,
+            r'id=["\']contact-service["\']',
+            "Service selection input/select with id='contact-service' must exist",
+        )
+        self.assertRegex(
+            contact_content,
+            r'<textarea[^>]*id=["\']contact-message["\'][^>]*required|<textarea[^>]*required[^>]*id=["\']contact-message["\']',
+            "Message textarea with id='contact-message' and required attribute must exist",
+        )
+        self.assertRegex(
+            contact_content,
+            r'<button[^>]*type=["\']submit["\']',
+            "Submit button with type='submit' must exist in contact section",
+        )
+
+        # Accessible error/status container
+        self.assertRegex(
+            contact_content,
+            r'(?:aria-live=["\'](?:polite|assertive)["\']|role=["\']alert["\'])',
+            "Contact section must include accessible live region or alert container for status messages",
+        )
+
+        # Direct mailto and GitHub links
+        self.assertRegex(
+            contact_content,
+            r'href=["\']mailto:[^"\']+["\']',
+            "Contact section must provide direct mailto link",
+        )
+        self.assertRegex(
+            contact_content,
+            r'href=["\']https://github\.com/consultanything-tech["\']',
+            "Contact section must provide link to GitHub organization",
+        )
+
+    def test_16_footer_and_interactions(self):
+        """Verify footer dynamic copyright year, back-to-top button, and JS/CSS validation handlers."""
+        self.assertTrue(self.index_path.exists(), "index.html missing")
+        content = self.index_path.read_text(encoding="utf-8")
+
+        # Footer element
+        footer_match = re.search(r'<footer\s*[^>]*>(.*?)</footer>', content, re.DOTALL)
+        self.assertIsNotNone(footer_match, "<footer> element must exist")
+        footer_content = footer_match.group(1)
+
+        # Dynamic copyright year element
+        self.assertRegex(
+            footer_content,
+            r'id=["\']copyright-year["\']',
+            "Footer must contain element with id='copyright-year'",
+        )
+
+        # Back-to-top button
+        self.assertRegex(
+            content,
+            r'<button[^>]*id=["\']back-to-top["\']|<a[^>]*id=["\']back-to-top["\']|<a[^>]*href=["\']#main-content["\'][^>]*class=["\'][^"\']*back-to-top',
+            "Page must contain back-to-top button with id='back-to-top'",
+        )
+
+        # main.js handlers for form validation, copyright year, and back-to-top
+        js_content = self.js_path.read_text(encoding="utf-8")
+        self.assertIn("contact-form", js_content, "main.js must reference #contact-form for validation")
+        self.assertIn("copyright-year", js_content, "main.js must update #copyright-year")
+        self.assertIn("getFullYear()", js_content, "main.js must compute current year using getFullYear()")
+        self.assertIn("back-to-top", js_content, "main.js must handle back-to-top button interaction")
+
+        # styles.css form focus and error states
+        css_content = self.css_path.read_text(encoding="utf-8")
+        self.assertIn(".input-error", css_content, "styles.css must define .input-error styling")
+
 
 if __name__ == "__main__":
     unittest.main()
