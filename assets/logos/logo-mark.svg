@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="100%" height="100%" fill="none" aria-label="ConsultAnythingTech Brand Mark">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="mark-bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <!-- Stroke Gradient -->
+    <linearGradient id="mark-border" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+
+    <!-- Monogram C Gradient -->
+    <linearGradient id="mark-c-grad" x1="6" y1="8" x2="36" y2="40" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="60%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+
+    <!-- Monogram A Gradient -->
+    <linearGradient id="mark-a-grad" x1="16" y1="6" x2="44" y2="42" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818cf8" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#4f46e5" />
+    </linearGradient>
+
+    <radialGradient id="mark-glow" cx="24" cy="24" r="20" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#020617" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Container Rounded Squircle -->
+  <rect x="1" y="1" width="46" height="46" rx="12" fill="url(#mark-bg)" stroke="url(#mark-border)" stroke-width="1.5" />
+  <circle cx="24" cy="24" r="18" fill="url(#mark-glow)" />
+
+  <!-- Geometric C Vector -->
+  <path
+    d="M 34,12 L 20,12 C 13,12 8,17 8,24 C 8,31 13,36 20,36 L 34,36 L 34,31 L 20,31 C 16,31 13,28 13,24 C 13,20 16,17 20,17 L 34,17 Z"
+    fill="url(#mark-c-grad)"
+  />
+
+  <!-- Interlocking Chevron A Vector -->
+  <path
+    d="M 28,7 L 39,31 L 34,31 L 31.5,26 L 23,26 L 26,21 L 29,21 L 28,16 L 28,7 Z"
+    fill="url(#mark-a-grad)"
+  />
+
+  <!-- High-Tech Data Crossbar Bridge -->
+  <polygon points="18,23.5 36,23.5 34.5,27 16.5,27" fill="#38bdf8" opacity="0.9" />
+
+  <!-- Glowing Quantum Apex Dot -->
+  <circle cx="28" cy="8" r="2.2" fill="#38bdf8" />
+  <circle cx="28" cy="8" r="1.1" fill="#ffffff" />
+</svg>

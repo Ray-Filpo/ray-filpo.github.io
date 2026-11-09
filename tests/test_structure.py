@@ -541,11 +541,31 @@ class TestSiteStructure(unittest.TestCase):
             "Contact section must include accessible live region or alert container for status messages",
         )
 
-        # Direct mailto and GitHub links
+        # Direct mailto, phone, WhatsApp, and GitHub links
+        self.assertIn(
+            "consultanythingtech@gmail.com",
+            contact_content,
+            "Contact section must display email consultanythingtech@gmail.com",
+        )
         self.assertRegex(
             contact_content,
-            r'href=["\']mailto:[^"\']+["\']',
-            "Contact section must provide direct mailto link",
+            r'href=["\']mailto:consultanythingtech@gmail\.com["\']',
+            "Contact section must provide direct mailto link to consultanythingtech@gmail.com",
+        )
+        self.assertIn(
+            "+65 88240325",
+            contact_content,
+            "Contact section must display contact number +65 88240325",
+        )
+        self.assertRegex(
+            contact_content,
+            r'href=["\']tel:\+6588240325["\']',
+            "Contact section must provide direct tel:+6588240325 link",
+        )
+        self.assertRegex(
+            contact_content,
+            r'href=["\']https://wa\.me/6588240325\?text=[^"\']+["\']',
+            "Contact section must provide direct WhatsApp initiator link with pre-filled message",
         )
         self.assertRegex(
             contact_content,
@@ -654,8 +674,8 @@ class TestSiteStructure(unittest.TestCase):
         )
         self.assertRegex(
             index_content,
-            r'<form[^>]*id=["\']contact-form["\'][^>]*action=["\']mailto:contact@consultanything\.tech["\']|<form[^>]*action=["\']mailto:contact@consultanything\.tech["\'][^>]*id=["\']contact-form["\']',
-            "#contact-form must have action='mailto:contact@consultanything.tech' as native fallback",
+            r'<form[^>]*id=["\']contact-form["\'][^>]*action=["\']mailto:consultanythingtech@gmail\.com["\']|<form[^>]*action=["\']mailto:consultanythingtech@gmail\.com["\'][^>]*id=["\']contact-form["\']',
+            "#contact-form must have action='mailto:consultanythingtech@gmail.com' as native fallback",
         )
         self.assertRegex(
             index_content,
@@ -667,6 +687,92 @@ class TestSiteStructure(unittest.TestCase):
             r'<form[^>]*id=["\']contact-form["\'][^>]*enctype=["\']text/plain["\']|<form[^>]*enctype=["\']text/plain["\'][^>]*id=["\']contact-form["\']',
             "#contact-form must have enctype='text/plain' as native fallback",
         )
+
+    def test_18_brand_logos_and_concepts(self):
+        """Verify presence of 4 distinct logo SVG options, primary logos, and interactive preview modal."""
+        logo_dir = REPO_ROOT / "assets" / "logos"
+        self.assertTrue(logo_dir.exists(), "assets/logos directory must exist")
+
+        expected_logos = [
+            "option-1-hex-prism.svg",
+            "option-2-interlocking-monogram.svg",
+            "option-3-circuit-delta.svg",
+            "option-4-infinity-code.svg",
+            "logo.svg",
+            "logo-mark.svg",
+        ]
+
+        for filename in expected_logos:
+            logo_path = logo_dir / filename
+            self.assertTrue(logo_path.exists(), f"Missing logo file: assets/logos/{filename}")
+            content = logo_path.read_text(encoding="utf-8")
+            self.assertGreater(len(content), 100, f"Logo {filename} appears too small or empty")
+            self.assertIn("<svg", content, f"Logo {filename} must be valid SVG")
+            self.assertIn("</svg>", content, f"Logo {filename} must have closing svg tag")
+
+        # Verify index.html uses primary logo SVG in header and footer
+        index_content = self.index_path.read_text(encoding="utf-8")
+        self.assertRegex(
+            index_content,
+            r'assets/logos/(?:logo-mark\.svg|logo\.svg)',
+            "index.html must embed or link assets/logos/logo-mark.svg or logo.svg",
+        )
+
+        # Verify interactive logo concepts modal / preview element exists
+        self.assertRegex(
+            index_content,
+            r'id=["\']logo-modal["\']|id=["\']logo-drawer["\']|id=["\']logo-concepts["\']',
+            "index.html must contain an interactive modal or drawer for exploring logo concepts",
+        )
+        for opt in ["option-1-hex-prism", "option-2-interlocking-monogram", "option-3-circuit-delta", "option-4-infinity-code"]:
+            self.assertIn(
+                opt,
+                index_content,
+                f"Logo concepts modal in index.html must reference {opt}",
+            )
+
+    def test_19_floating_whatsapp_initiator(self):
+        """Verify floating quick-contact WhatsApp initiator button exists and is configured properly."""
+        index_content = self.index_path.read_text(encoding="utf-8")
+
+        # Floating WhatsApp initiator button
+        self.assertRegex(
+            index_content,
+            r'id=["\']floating-whatsapp["\']|<a[^>]*href=["\']https://wa\.me/6588240325\?text=[^"\']+["\'][^>]*class=["\'][^"\']*fixed',
+            "index.html must contain a floating WhatsApp quick-contact initiator button",
+        )
+        self.assertRegex(
+            index_content,
+            r'https://wa\.me/6588240325\?text=Hello%20ConsultAnythingTech%2C%20I%27m%20reaching%20out%20from%20your%20official%20website',
+            "WhatsApp link must contain pre-filled message identifying visitor from official website",
+        )
+
+    def test_20_expanded_project_portfolio(self):
+        """Verify portfolio showcase contains all live client platforms and open-source public repos."""
+        index_content = self.index_path.read_text(encoding="utf-8")
+
+        # Required public platforms & repositories
+        portfolio_items = {
+            "SPSLNT": "https://www.spslnt.org.sg/",
+            "The 1494": "https://the1494.com/",
+            "ScienceHub": "https://sciencehub.experthub.store/",
+            "HyperFetch": "https://github.com/consultanything-tech/hyperfetch-app",
+            "ProofPath": "https://github.com/consultanything-tech/ProofPath",
+            "IndiaCrafted": "https://github.com/consultanything-tech/indiacrafted-homepage-mockup",
+            "SpendWise": "https://github.com/consultanything-tech/spendwise",
+        }
+
+        for name, expected_url in portfolio_items.items():
+            self.assertIn(
+                name,
+                index_content,
+                f"index.html must feature project '{name}' in portfolio showcase",
+            )
+            self.assertIn(
+                expected_url,
+                index_content,
+                f"index.html must link project '{name}' to public URL '{expected_url}'",
+            )
 
 
 if __name__ == "__main__":

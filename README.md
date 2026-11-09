@@ -6,12 +6,35 @@ ConsultAnythingTech is a modern technology consultancy and digital product studi
 
 ---
 
-## Featured Products & Projects
+## Featured Products & Client Platforms
 
-- **HyperFetch**: High-performance native macOS download accelerator engineered with Swift 6 and modern SwiftUI.
-- **ProofPath**: Automated QA and browser validation framework with multi-modal proof generation for AI hackathons and CI/CD pipelines.
-- **IndiaCrafted**: Full-stack artisan marketplace and digital storefront connecting indigenous makers with global buyers.
-- **SpendWise**: Privacy-conscious personal finance platform featuring predictive cash flow forecasting and budget intelligence.
+- **SPSLNT Website & Member Portal**: [spslnt.org.sg](https://www.spslnt.org.sg/) — Singapore community portal, temple cultural events, and member services platform.
+- **The 1494 Website**: [the1494.com](https://the1494.com/) — Living cultural membership platform in the luxury whisky ecosystem with private salons and bespoke collector experiences.
+- **ScienceHub**: [sciencehub.experthub.store](https://sciencehub.experthub.store/) — Interactive STEM & language platform with 100 curriculum modules and bilingual AI tutoring hosted on Cloudflare Pages.
+- **HyperFetch**: [github.com/consultanything-tech/hyperfetch-app](https://github.com/consultanything-tech/hyperfetch-app) — High-performance native macOS download manager engineered with Swift 6 and modern SwiftUI.
+- **ProofPath**: [github.com/consultanything-tech/ProofPath](https://github.com/consultanything-tech/ProofPath) — Automated QA and browser validation framework with multi-agent orchestration.
+- **IndiaCrafted**: [github.com/consultanything-tech/indiacrafted-homepage-mockup](https://github.com/consultanything-tech/indiacrafted-homepage-mockup) — Full-stack artisan marketplace and edge storefront built on Next.js.
+- **SpendWise**: [github.com/consultanything-tech/spendwise](https://github.com/consultanything-tech/spendwise) — Privacy-conscious personal finance platform featuring predictive cash flow forecasting.
+
+---
+
+## Brand Assets & Vector Logos
+
+Production-grade SVG vector marks located in `assets/logos/`:
+- **Primary Mark**: `assets/logos/logo-mark.svg` & `assets/logos/logo.svg`
+- **Option 1 (Hex Prism)**: `assets/logos/option-1-hex-prism.svg` — Geometric isometric 3D prism with interconnected vertex data nodes.
+- **Option 2 (Interlocking Monogram - Selected Primary)**: `assets/logos/option-2-interlocking-monogram.svg` — Interlocking "C" and "A" technical chevron glyphs with glowing apex.
+- **Option 3 (Circuit Delta)**: `assets/logos/option-3-circuit-delta.svg` — Quantum circuit delta vector signifying high-throughput engineering velocity.
+- **Option 4 (Infinity Code)**: `assets/logos/option-4-infinity-code.svg` — Möbius infinity loop merging code braces `{ }`.
+
+---
+
+## Contact & Direct Channels
+
+- **Email**: [consultanythingtech@gmail.com](mailto:consultanythingtech@gmail.com)
+- **Phone**: [+65 88240325](tel:+6588240325)
+- **WhatsApp**: [Chat on WhatsApp (+65 88240325)](https://wa.me/6588240325?text=Hello%20ConsultAnythingTech%2C%20I%27m%20reaching%20out%20from%20your%20official%20website%20regarding%20...)
+- **GitHub**: [github.com/consultanything-tech](https://github.com/consultanything-tech)
 
 ---
 

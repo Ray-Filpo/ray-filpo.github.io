@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" width="100%" height="100%" fill="none" aria-label="ConsultAnythingTech Logo">
+  <defs>
+    <!-- Background Squircle Gradient -->
+    <linearGradient id="logo-bg" x1="4" y1="8" x2="52" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+
+    <!-- Border Gradient -->
+    <linearGradient id="logo-border" x1="4" y1="8" x2="52" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+
+    <!-- Monogram C Gradient -->
+    <linearGradient id="logo-c-grad" x1="12" y1="16" x2="42" y2="48" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="60%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+
+    <!-- Monogram A Gradient -->
+    <linearGradient id="logo-a-grad" x1="22" y1="14" x2="50" y2="50" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818cf8" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#4f46e5" />
+    </linearGradient>
+
+    <!-- Wordmark Gradient -->
+    <linearGradient id="wordmark-tech" x1="240" y1="26" x2="295" y2="42" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+  </defs>
+
+  <!-- Left Icon Mark -->
+  <g transform="translate(4, 8)">
+    <rect x="0" y="0" width="48" height="48" rx="12" fill="url(#logo-bg)" stroke="url(#logo-border)" stroke-width="1.5" />
+    
+    <!-- C Vector -->
+    <path
+      d="M 34,13 L 20,13 C 13,13 8,18 8,25 C 8,32 13,37 20,37 L 34,37 L 34,32 L 20,32 C 16,32 13,29 13,25 C 13,21 16,18 20,18 L 34,18 Z"
+      fill="url(#logo-c-grad)"
+    />
+
+    <!-- Interlocking A Vector -->
+    <path
+      d="M 28,8 L 39,32 L 34,32 L 31.5,27 L 23,27 L 26,22 L 29,22 L 28,17 L 28,8 Z"
+      fill="url(#logo-a-grad)"
+    />
+
+    <!-- Crossbar -->
+    <polygon points="18,24.5 36,24.5 34.5,28 16.5,28" fill="#38bdf8" opacity="0.9" />
+
+    <!-- Apex Dot -->
+    <circle cx="28" cy="9" r="2" fill="#38bdf8" />
+    <circle cx="28" cy="9" r="1" fill="#ffffff" />
+  </g>
+
+  <!-- Typographic Wordmark -->
+  <text x="66" y="36" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif" font-weight="700" font-size="21" fill="#f8fafc" letter-spacing="-0.5">
+    ConsultAnything<tspan fill="url(#wordmark-tech)" font-weight="800">Tech</tspan>
+  </text>
+
+  <!-- Engineering Subtitle -->
+  <text x="67" y="49" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Inter', sans-serif" font-weight="600" font-size="8.5" fill="#94a3b8" letter-spacing="2.8">
+    SYSTEMS &bull; ADVISORY &bull; STUDIO
+  </text>
+</svg>

@@ -257,10 +257,96 @@ document.addEventListener("DOMContentLoaded", () => {
       // Valid form submission
       contactForm.reset();
       if (formStatus) {
-        formStatus.innerHTML = "Thank you! Your inquiry has been received. We will respond within 24 business hours. You may also email us directly at <a href='mailto:contact@consultanything.tech' class='underline hover:text-white font-mono'>contact@consultanything.tech</a>.";
+        formStatus.innerHTML = "Thank you! Your inquiry has been received. We will respond within 24 business hours. You may also email us directly at <a href='mailto:consultanythingtech@gmail.com' class='underline hover:text-white font-mono'>consultanythingtech@gmail.com</a>.";
         formStatus.className = "mb-6 p-4 rounded-xl text-sm font-medium bg-emerald-950/80 border border-emerald-800 text-emerald-300 block";
         formStatus.focus();
       }
+    });
+  }
+
+  // Interactive Logo Concepts Modal & SVG Copy Functionality
+  const logoModal = document.getElementById("logo-modal");
+  const openModalBtns = document.querySelectorAll(".open-logo-modal-trigger");
+  const closeModalBtn = document.getElementById("close-logo-modal-btn");
+
+  if (logoModal) {
+    openModalBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        if (typeof logoModal.showModal === "function") {
+          logoModal.showModal();
+        } else {
+          logoModal.classList.remove("hidden");
+        }
+        document.body.style.overflow = "hidden";
+      });
+    });
+
+    function closeModal() {
+      if (typeof logoModal.close === "function") {
+        logoModal.close();
+      } else {
+        logoModal.classList.add("hidden");
+      }
+      document.body.style.overflow = "";
+    }
+
+    if (closeModalBtn) {
+      closeModalBtn.addEventListener("click", closeModal);
+    }
+
+    logoModal.addEventListener("click", (event) => {
+      const rect = logoModal.getBoundingClientRect();
+      const isInDialog = (
+        rect.top <= event.clientY &&
+        event.clientY <= rect.top + rect.height &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.left + rect.width
+      );
+      if (!isInDialog) {
+        closeModal();
+      }
+    });
+
+    logoModal.addEventListener("cancel", () => {
+      document.body.style.overflow = "";
+    });
+
+    // Copy SVG snippet or direct path to clipboard
+    const copySvgBtns = document.querySelectorAll(".copy-svg-btn");
+    copySvgBtns.forEach((btn) => {
+      btn.addEventListener("click", async () => {
+        const svgPath = btn.getAttribute("data-svg-path");
+        if (!svgPath) return;
+
+        try {
+          const resp = await fetch(svgPath);
+          const svgCode = await resp.text();
+          await navigator.clipboard.writeText(svgCode);
+
+          const originalText = btn.innerHTML;
+          btn.innerHTML = `
+            <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+            </svg>
+            <span>Copied SVG!</span>
+          `;
+          btn.classList.add("border-emerald-500", "text-emerald-300");
+
+          setTimeout(() => {
+            btn.innerHTML = originalText;
+            btn.classList.remove("border-emerald-500", "text-emerald-300");
+          }, 2000);
+        } catch (e) {
+          // Fallback to copying file URL
+          try {
+            await navigator.clipboard.writeText(window.location.origin + "/" + svgPath);
+            btn.textContent = "Path Copied!";
+            setTimeout(() => {
+              btn.textContent = "Copy SVG";
+            }, 2000);
+          } catch (_) {}
+        }
+      });
     });
   }
 });

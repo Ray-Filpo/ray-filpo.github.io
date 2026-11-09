@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" fill="none" aria-label="ConsultAnythingTech Option 3: Quantum Circuit Delta">
+  <defs>
+    <!-- Delta Gradients -->
+    <linearGradient id="delta-wing-l" x1="60" y1="12" x2="16" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="60%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="delta-wing-r" x1="60" y1="12" x2="104" y2="104" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#818cf8" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+    <linearGradient id="delta-trace" x1="20" y1="50" x2="100" y2="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="delta-glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <radialGradient id="delta-core-glow" cx="60" cy="62" r="30" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#020617" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- Ambient Core Glow -->
+  <circle cx="60" cy="62" r="32" fill="url(#delta-core-glow)" />
+
+  <!-- Outer Velocity Delta Chevron -->
+  <!-- Left Wing -->
+  <polygon points="60,14 18,98 34,98 60,46" fill="url(#delta-wing-l)" />
+  <!-- Right Wing -->
+  <polygon points="60,14 60,46 86,98 102,98" fill="url(#delta-wing-r)" />
+
+  <!-- Inner High-Velocity Thruster Chevron -->
+  <polygon points="60,34 38,82 46,82 60,54 74,82 82,82" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2" stroke-linejoin="round" />
+
+  <!-- Printed Circuit Traces -->
+  <!-- Wing Bus Lines -->
+  <path d="M 34,70 L 22,94 M 86,70 L 98,94" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round" />
+  <circle cx="22" cy="94" r="2.5" fill="#38bdf8" />
+  <circle cx="98" cy="94" r="2.5" fill="#818cf8" />
+
+  <!-- Horizontal Data Bus -->
+  <path d="M 42,92 L 78,92" stroke="url(#delta-trace)" stroke-width="2" stroke-linecap="round" />
+  <circle cx="42" cy="92" r="2" fill="#06b6d4" />
+  <circle cx="78" cy="92" r="2" fill="#a855f7" />
+
+  <!-- Central Quantum Reactor Core (Ring & Nodes) -->
+  <circle cx="60" cy="62" r="8" stroke="#38bdf8" stroke-width="1.8" fill="#090d16" />
+  <circle cx="60" cy="62" r="4" fill="#6366f1" filter="url(#delta-glow)" />
+  <circle cx="60" cy="62" r="2" fill="#ffffff" />
+
+  <!-- Apex Accelerator Tip -->
+  <polygon points="60,8 57,18 63,18" fill="#ffffff" filter="url(#delta-glow)" />
+  <circle cx="60" cy="14" r="2.5" fill="#38bdf8" />
+</svg>
