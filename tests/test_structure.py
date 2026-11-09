@@ -73,7 +73,7 @@ class TestSiteStructure(unittest.TestCase):
         )
 
         # OpenGraph tags
-        for og_prop in ["og:title", "og:description", "og:type", "og:url"]:
+        for og_prop in ["og:title", "og:description", "og:type", "og:url", "og:image"]:
             self.assertRegex(
                 content,
                 rf"<meta\s+property=[\"']{re.escape(og_prop)}[\"']\s+content=[\"'][^\"']+[\"']",
@@ -81,7 +81,7 @@ class TestSiteStructure(unittest.TestCase):
             )
 
         # Twitter Card tags
-        for twitter_name in ["twitter:card", "twitter:title", "twitter:description"]:
+        for twitter_name in ["twitter:card", "twitter:title", "twitter:description", "twitter:image"]:
             self.assertRegex(
                 content,
                 rf"<meta\s+name=[\"']{re.escape(twitter_name)}[\"']\s+content=[\"'][^\"']+[\"']",
@@ -146,6 +146,24 @@ class TestSiteStructure(unittest.TestCase):
             r"<button[^>]*aria-label=[\"'][^\"']+[\"'][^>]*aria-expanded=[\"'](true|false)[\"']",
             "Mobile navigation button must specify accessible aria-label and aria-expanded attributes",
         )
+        self.assertRegex(
+            content,
+            r"<button[^>]*id=[\"']mobile-menu-btn[\"'][^>]*aria-controls=[\"']mobile-menu[\"']|"
+            r"<button[^>]*aria-controls=[\"']mobile-menu[\"'][^>]*id=[\"']mobile-menu-btn[\"']",
+            "Mobile navigation button must have aria-controls='mobile-menu'",
+        )
+
+        # Skip link and main landmark target
+        self.assertRegex(
+            content,
+            r"<a[^>]*href=[\"']#main-content[\"'][^>]*>[^<]*Skip to main content[^<]*</a>",
+            "index.html must include accessible skip to main content link",
+        )
+        self.assertRegex(
+            content,
+            r"<main[^>]*id=[\"']main-content[\"']",
+            "<main> landmark must have id='main-content' as target for skip link",
+        )
 
     def test_06_external_scripts_and_styles(self):
         """Verify Tailwind CSS script and custom stylesheet inclusion."""
@@ -196,6 +214,83 @@ class TestSiteStructure(unittest.TestCase):
         self.assertIn("https://consultanything-tech.github.io", sitemap_content)
         self.assertIn("<urlset", sitemap_content)
         self.assertIn("<url>", sitemap_content)
+
+    def test_09_hero_section(self):
+        """Verify hero section has engagement badge, headline, CTAs, and engineering metrics."""
+        self.assertTrue(self.index_path.exists(), "index.html missing")
+        content = self.index_path.read_text(encoding="utf-8")
+
+        # Hero section exists
+        self.assertRegex(content, r'<section\s+[^>]*id=["\']hero["\']', "Missing #hero section")
+
+        # Status / engagement badge (e.g. accepting Q1/Q2 engagements)
+        self.assertRegex(
+            content,
+            r"(?i)(?:Accepting\s+(?:new\s+)?Q[1-4](?:/Q[1-4])?\s+(?:client\s+)?engagements|Available\s+for\s+Q[1-4])",
+            "Hero section must include status/engagement badge (e.g. accepting Q1/Q2 engagements)",
+        )
+
+        # Primary and secondary CTA buttons linking to #contact and #products or #services
+        hero_match = re.search(r'<section\s+[^>]*id=["\']hero["\'][^>]*>(.*?)</section>', content, re.DOTALL)
+        self.assertIsNotNone(hero_match, "#hero section content could not be extracted")
+        hero_content = hero_match.group(1)
+
+        self.assertRegex(
+            hero_content,
+            r'href=["\']#contact["\']',
+            "Hero section must include a primary CTA linking to #contact",
+        )
+        self.assertRegex(
+            hero_content,
+            r'href=["\']#(?:products|services)["\']',
+            "Hero section must include a secondary CTA linking to #products or #services",
+        )
+
+        # Key technical metric highlights (e.g., 99.99% reliability, sub-50ms latency, 100% type safety)
+        for metric in ["99.99%", "50ms", "100%"]:
+            self.assertIn(
+                metric,
+                hero_content,
+                f"Hero section must feature key technical metric: {metric}",
+            )
+
+    def test_10_services_section(self):
+        """Verify services section contains header and 4 core technical service cards."""
+        self.assertTrue(self.index_path.exists(), "index.html missing")
+        content = self.index_path.read_text(encoding="utf-8")
+
+        services_match = re.search(r'<section\s+[^>]*id=["\']services["\'][^>]*>(.*?)</section>', content, re.DOTALL)
+        self.assertIsNotNone(services_match, "#services section content could not be extracted")
+        services_content = services_match.group(1)
+
+        # Descriptive section header
+        self.assertRegex(
+            services_content,
+            r'(?s)<h2[^>]*>.*?(?:Services|Consulting).*?</h2>',
+            "Services section must have descriptive h2 header",
+        )
+
+        # 4 core service cards with distinct technical domains
+        core_services = [
+            "Distributed Cloud & Systems Architecture",
+            "High-Performance Native & Web Engineering",
+            "AI Systems & Agentic Workflows",
+            "Security Hardening & Performance Optimization",
+        ]
+        for service_title in core_services:
+            self.assertIn(
+                service_title,
+                services_content,
+                f"Services section must contain service card for '{service_title}'",
+            )
+
+        # Deliverables and technology tags/badges check
+        for tag in ["Kubernetes", "Rust", "PyTorch", "eBPF"]:
+            self.assertIn(
+                tag,
+                services_content,
+                f"Services section should showcase modern technology tag '{tag}'",
+            )
 
 
 if __name__ == "__main__":

@@ -13,11 +13,13 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://consultanything-tech.github.io/">
   <meta property="og:site_name" content="ConsultAnythingTech">
+  <meta property="og:image" content="https://consultanything-tech.github.io/assets/images/og-card.png">
 
   <!-- Twitter Card Metadata -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="ConsultAnythingTech | Technology Consultancy &amp; Digital Product Studio">
   <meta name="twitter:description" content="Specializing in high-performance web and native engineering, cloud architecture, and intelligent agentic workflows.">
+  <meta name="twitter:image" content="https://consultanything-tech.github.io/assets/images/og-card.png">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -59,6 +61,11 @@
 </head>
 <body class="bg-slate-950 text-slate-100 antialiased selection:bg-indigo-500 selection:text-white">
 
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-indigo-600 focus:text-white focus:rounded-lg focus:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-400 font-medium text-sm">
+    Skip to main content
+  </a>
+
   <!-- Ambient Background Lighting -->
   <div class="relative w-full overflow-hidden">
     <div class="ambient-glow ambient-glow-indigo top-0 left-1/4 w-[500px] h-[500px]"></div>
@@ -96,7 +103,7 @@
 
       <!-- Mobile Menu Button -->
       <div class="flex md:hidden">
-        <button id="mobile-menu-btn" type="button" aria-label="Toggle navigation menu" aria-expanded="false" class="p-2 text-slate-400 hover:text-white hover:bg-slate-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400">
+        <button id="mobile-menu-btn" type="button" aria-controls="mobile-menu" aria-label="Toggle navigation menu" aria-expanded="false" class="p-2 text-slate-400 hover:text-white hover:bg-slate-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400">
           <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
           </svg>
@@ -122,25 +129,303 @@
   </header>
 
   <!-- Main Content Structure -->
-  <main class="relative z-10 pt-24 pb-20">
-    <!-- Hero Placeholder Section -->
-    <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-950/70 text-indigo-400 border border-indigo-800/50 mb-6">
-        <span>Software Studio &amp; Technical Advisory</span>
+  <main id="main-content" class="relative z-10 pt-24 pb-20">
+    <!-- Hero Section -->
+    <section id="hero" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-24 text-center">
+      <!-- Status Badge -->
+      <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-emerald-950/70 text-emerald-300 border border-emerald-500/30 mb-8 backdrop-blur-md shadow-sm shadow-emerald-950/50">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>Accepting Q1/Q2 engagements</span>
+        <span class="text-slate-500">&bull;</span>
+        <span class="text-slate-400 font-normal">Technical Advisory &amp; Architecture</span>
       </div>
-      <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
-        Engineering High-Performance Digital Products and Intelligent Systems
+
+      <!-- Hero Headline -->
+      <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl mx-auto leading-tight">
+        Engineering High-Performance <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 via-cyan-400 to-indigo-300">Distributed Systems</span> &amp; Digital Products
       </h1>
-      <p class="mt-6 text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto">
-        Specializing in high-performance web and native engineering, cloud architecture, and intelligent agentic workflows.
+
+      <!-- Value Proposition -->
+      <p class="mt-6 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+        We partner with engineering leaders and high-growth ventures to architect resilient cloud infrastructure, build native client software, and deploy autonomous agentic workflows.
       </p>
+
+      <!-- Primary & Secondary CTAs -->
+      <div class="mt-10 flex flex-wrap items-center justify-center gap-4">
+        <a href="#contact" class="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-xl text-white bg-indigo-600 hover:bg-indigo-500 transition-all duration-200 shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:-translate-y-0.5">
+          Initiate Technical Engagement
+          <svg class="ml-2 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+          </svg>
+        </a>
+        <a href="#services" class="inline-flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-xl text-slate-200 bg-slate-900/80 hover:bg-slate-800 border border-slate-700 hover:border-slate-600 transition-all duration-200 backdrop-blur-md hover:-translate-y-0.5">
+          Explore Consulting Services
+        </a>
+      </div>
+
+      <!-- Key Technical Metric Highlights -->
+      <div class="mt-16 pt-12 border-t border-slate-800/80 max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-left">
+        <div class="p-5 rounded-2xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-md">
+          <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">99.99%</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1 font-medium">Uptime &amp; SLA Reliability Target</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-md">
+          <div class="text-3xl sm:text-4xl font-extrabold text-cyan-400 tracking-tight">&lt; 50ms</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1 font-medium">Sub-50ms P99 Distributed Latency</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-md">
+          <div class="text-3xl sm:text-4xl font-extrabold text-indigo-400 tracking-tight">100%</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1 font-medium">End-to-End Type Safety Verification</div>
+        </div>
+        <div class="p-5 rounded-2xl bg-slate-900/50 border border-slate-800/80 backdrop-blur-md">
+          <div class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Zero</div>
+          <div class="text-xs sm:text-sm text-slate-400 mt-1 font-medium">Unmanaged Cloud Spend &amp; Lock-in</div>
+        </div>
+      </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div class="border-t border-slate-800/60 pt-16">
-        <h2 class="text-3xl font-bold tracking-tight text-white">Consulting Services</h2>
-        <p class="mt-2 text-slate-400">Architecture, engineering, and performance advisory for modern product teams.</p>
+    <section id="services" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <div class="border-t border-slate-800/80 pt-16">
+        <!-- Section Header -->
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold bg-indigo-950/80 text-indigo-400 border border-indigo-800/50 mb-4">
+            <span>Specialized Engineering Practices</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white">
+            Consulting Services
+          </h2>
+          <p class="mt-4 text-base sm:text-lg text-slate-400 leading-relaxed">
+            Targeted technical advisory and elite hands-on engineering to solve complex architectural hurdles, modernize legacy systems, and accelerate release velocity.
+          </p>
+        </div>
+
+        <!-- 4 Core Service Cards Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Card 1: Distributed Cloud & Systems Architecture -->
+          <div class="service-card rounded-2xl p-8 bg-slate-900/60 border border-slate-800 backdrop-blur-md flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-4 mb-5">
+                <div class="w-12 h-12 rounded-xl bg-indigo-950/90 border border-indigo-700/50 flex items-center justify-center text-indigo-400 shadow-md shadow-indigo-950">
+                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 0a3 3 0 01-3-3m3 3a3 3 0 100 6h13.5a3 3 0 100-6m-16.5-3a3 3 0 013-3h13.5a3 3 0 013 3m-19.5 0a4.5 4.5 0 01.9-2.7L5.75 6a3 3 0 012.7-1.5h7.1a3 3 0 012.7 1.5l1.6 2.55a4.5 4.5 0 01.9 2.7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-white tracking-tight">Distributed Cloud &amp; Systems Architecture</h3>
+                  <p class="text-xs text-indigo-400 font-medium">Scalable, Resilient Infrastructure</p>
+                </div>
+              </div>
+
+              <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                Overcome scaling bottlenecks, cascading downtime, and expensive monolithic locks. We engineer partitioned event-driven topologies and cloud platforms engineered for continuous availability.
+              </p>
+
+              <div class="space-y-3 mb-6">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Technical Deliverables:</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Multi-region topology design with automated active-active failover</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Event-driven streaming pipelines and message brokers (Kafka/NATS)</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Declarative Infrastructure as Code (IaC) &amp; automated GitOps releases</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-800/80">
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">Kubernetes</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">Go</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">Terraform</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">Kafka</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">AWS</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">GCP</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: High-Performance Native & Web Engineering -->
+          <div class="service-card rounded-2xl p-8 bg-slate-900/60 border border-slate-800 backdrop-blur-md flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-4 mb-5">
+                <div class="w-12 h-12 rounded-xl bg-cyan-950/90 border border-cyan-700/50 flex items-center justify-center text-cyan-400 shadow-md shadow-cyan-950">
+                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M14.25 9.75L16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0020.25 18V6A2.25 2.25 0 0018 3.75H6A2.25 2.25 0 003.75 6v12A2.25 2.25 0 006 20.25z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-white tracking-tight">High-Performance Native &amp; Web Engineering</h3>
+                  <p class="text-xs text-cyan-400 font-medium">Sub-Second Speed, Native Precision</p>
+                </div>
+              </div>
+
+              <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                Eliminate memory leaks, sluggish UI thread stalls, and excessive bundle bloat. We build native desktop clients, cross-platform apps, and high-framerate modern web interfaces.
+              </p>
+
+              <div class="space-y-3 mb-6">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Technical Deliverables:</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>High-throughput native desktop, mobile, and CLI tools with zero garbage collection pauses</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Sub-second LCP optimization and strict Core Web Vitals compliance</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>WebAssembly (Wasm) compute modules for browser-side data processing</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-800/80">
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">Rust</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">TypeScript</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">React</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">Next.js</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">WebAssembly</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">Swift</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: AI Systems & Agentic Workflows -->
+          <div class="service-card rounded-2xl p-8 bg-slate-900/60 border border-slate-800 backdrop-blur-md flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-4 mb-5">
+                <div class="w-12 h-12 rounded-xl bg-violet-950/90 border border-violet-700/50 flex items-center justify-center text-violet-400 shadow-md shadow-violet-950">
+                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 00-2.456 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-white tracking-tight">AI Systems &amp; Agentic Workflows</h3>
+                  <p class="text-xs text-violet-400 font-medium">Deterministic Automation, Production LLMs</p>
+                </div>
+              </div>
+
+              <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                Replace fragile prompt chains and non-deterministic prototypes with robust, type-safe multi-agent systems, local inference pipelines, and contextual retrieval engines.
+              </p>
+
+              <div class="space-y-3 mb-6">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Technical Deliverables:</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Multi-agent orchestration pipelines with bounded action spaces and structured outputs</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Enterprise Retrieval-Augmented Generation (RAG) with hybrid vector and lexical indexing</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Self-hosted model deployment, quantization, and evaluation benchmarks</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-800/80">
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">PyTorch</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">Python</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">LangChain</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">Ollama</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">FastAPI</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">Vector DBs</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Security Hardening & Performance Optimization -->
+          <div class="service-card rounded-2xl p-8 bg-slate-900/60 border border-slate-800 backdrop-blur-md flex flex-col justify-between">
+            <div>
+              <div class="flex items-center gap-4 mb-5">
+                <div class="w-12 h-12 rounded-xl bg-amber-950/90 border border-amber-700/50 flex items-center justify-center text-amber-400 shadow-md shadow-amber-950">
+                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke-width="1.75" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-bold text-white tracking-tight">Security Hardening &amp; Performance Optimization</h3>
+                  <p class="text-xs text-amber-400 font-medium">Zero-Trust Posture, Deep Profiling</p>
+                </div>
+              </div>
+
+              <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                Protect sensitive business logic and eliminate compute waste. We run kernel-level observability, perform rigorous threat model audits, and optimize query latency down to the microsecond.
+              </p>
+
+              <div class="space-y-3 mb-6">
+                <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-400">Technical Deliverables:</h4>
+                <ul class="space-y-2 text-sm text-slate-300">
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Zero-trust architecture auditing, mutual TLS (mTLS) enforcement, and secret protection</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Kernel-level eBPF performance profiling and bottleneck mitigation</span>
+                  </li>
+                  <li class="flex items-start gap-2.5">
+                    <svg class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>Automated CI/CD security gating (SAST/DAST/Trivy) and compliance automation</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="pt-6 border-t border-slate-800/80">
+              <div class="flex flex-wrap gap-2">
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">eBPF</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">Linux</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">Docker</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">OWASP</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">WireGuard</span>
+                <span class="tech-tag text-xs font-medium px-2.5 py-1 rounded-md bg-slate-800/90 text-slate-300 border border-slate-700/60">Rust</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
